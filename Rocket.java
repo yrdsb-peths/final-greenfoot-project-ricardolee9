@@ -19,6 +19,8 @@ public class Rocket extends Actor
     int imageIndex = 0;
     // Timer
     SimpleTimer animationTimer = new SimpleTimer();
+    // Can fire
+    boolean fireAble = true;
     
     /**
      * Constructor for the Rocket class
@@ -65,21 +67,35 @@ public class Rocket extends Actor
         if (Greenfoot.isKeyDown("d") || Greenfoot.isKeyDown("right")) {
             moveRight();
         }
+        // Shoots a bullet
+        shoot();
         // Animate Rocket
         animateRocket();
     }
-    
+    /**
+     * The method that shoots a bullet
+     */
+    private void shoot() {
+        if (fireAble && Greenfoot.isKeyDown("space")) {
+            Bullet bullet = new Bullet();
+            getWorld().addObject(bullet, getX(), getY());
+            fireAble = false;
+        }
+        if (!Greenfoot.isKeyDown("space")) {
+            fireAble = true;
+        }
+    }
     /**
      * Method that moves the rocket to left
      */
     private void moveLeft() {
-        setLocation(getX()-1, getY());
+        setLocation(getX()-2, getY());
     }
     
     /**
      * Method that moves the rocket to right
      */
     private void moveRight() {
-        setLocation(getX()+1, getY());
+        setLocation(getX()+2, getY());
     }
 }
