@@ -15,7 +15,7 @@ public class MyWorld extends World
      */
     public MyWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        // Create a new world with 400x600 cells with a cell size of 1x1 pixels.
         super(400, 600, 1, false);
         prepare();
     }
@@ -28,5 +28,11 @@ public class MyWorld extends World
         Rocket rocket = new Rocket();
         addObject(rocket, getWidth()/2, 500);
         rocket.turn(-90);
+        spawnAlien();
+    }
+    
+    private void spawnAlien() {
+        Alien alien = new Alien();
+        addObject(alien, Greenfoot.getRandomNumber(400), 0);
     }
 }
