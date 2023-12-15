@@ -15,5 +15,12 @@ public class Bullet extends Actor
     public void act()
     {
         setLocation(getX(), getY() - 5);
+        
+        if (isTouching(Alien.class)) {
+            removeTouching(Alien.class);
+            MyWorld myWorld = (MyWorld) getWorld();
+            myWorld.spawnAlien();
+            getWorld().removeObject(this);
+        }
     }
 }

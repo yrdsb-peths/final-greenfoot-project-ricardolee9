@@ -15,5 +15,13 @@ public class Alien extends Actor
     public void act()
     {
         setLocation(getX(), getY() + 2);
+        
+        if (isTouching(Rocket.class)) {
+            gameOver();
+        }
+    }
+    
+    private void gameOver() {
+        removeTouching(Rocket.class);
     }
 }

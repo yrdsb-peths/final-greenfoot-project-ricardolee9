@@ -31,7 +31,7 @@ public class MyWorld extends World
         spawnAlien();
     }
     
-    private void spawnAlien() {
+    public void spawnAlien() {
         Alien alien = new Alien();
         addObject(alien, Greenfoot.getRandomNumber(400), 0);
     }
