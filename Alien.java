@@ -12,9 +12,11 @@ public class Alien extends Actor
      * Act - do whatever the Alien wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    // Controls the speed of Alien
+    private int speed = 2;
     public void act()
     {
-        setLocation(getX(), getY() + 2);
+        setLocation(getX(), getY() + speed);
         
         if (isTouching(Rocket.class)) {
             gameOver();
@@ -22,6 +24,12 @@ public class Alien extends Actor
     }
     
     private void gameOver() {
+        // Make it stop
+        speed = 0;
+        // Remove the Rocket
         removeTouching(Rocket.class);
+        // Set End Screen
+        EndScreen endScreen = new EndScreen();
+        Greenfoot.setWorld(endScreen);
     }
 }
