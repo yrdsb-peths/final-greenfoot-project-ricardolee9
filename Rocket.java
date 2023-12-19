@@ -8,11 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Rocket extends Actor
 {
-    /**
-     * Act - do whatever the Rocket wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    
+    // Rocket Shooting Sound
+    GreenfootSound sound = new GreenfootSound("sounds/shooting.mp3");
     // Game Frames Initialization
     GreenfootImage[] idle = new GreenfootImage[8];
     // Frames Image Index
@@ -79,6 +76,7 @@ public class Rocket extends Actor
         if (fireAble && Greenfoot.isKeyDown("space")) {
             Bullet bullet = new Bullet();
             getWorld().addObject(bullet, getX(), getY());
+            sound.play();
             fireAble = false;
         }
         if (!Greenfoot.isKeyDown("space")) {
