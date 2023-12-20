@@ -19,6 +19,7 @@ public class Alien extends Actor
         setLocation(getX(), getY() + speed);
         
         if (isTouching(Rocket.class)) {
+            Logger.info("Rocket crashed into Alien");
             gameOver();
         }
     }

@@ -22,6 +22,7 @@ public class Bullet extends Actor
             myWorld.spawnAlien();
             myWorld.increaseScore();
             getWorld().removeObject(this);
+            Logger.info("Bullet hit Alien");
         }
     }
 }

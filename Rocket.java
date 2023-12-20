@@ -78,6 +78,7 @@ public class Rocket extends Actor
             getWorld().addObject(bullet, getX(), getY());
             sound.play();
             fireAble = false;
+            Logger.info("Rocket fires a bullet");
         }
         if (!Greenfoot.isKeyDown("space")) {
             fireAble = true;
@@ -87,6 +88,7 @@ public class Rocket extends Actor
      * Method that moves the rocket to left
      */
     private void moveLeft() {
+        Logger.info(getX());
         setLocation(getX()-2, getY());
     }
     
@@ -94,6 +96,7 @@ public class Rocket extends Actor
      * Method that moves the rocket to right
      */
     private void moveRight() {
+        Logger.info(getX());
         setLocation(getX()+2, getY());
     }
 }
