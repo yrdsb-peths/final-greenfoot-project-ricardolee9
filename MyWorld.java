@@ -11,6 +11,8 @@ public class MyWorld extends World
     // Score
     private int score = 0;
     private Label scoreLabel;
+    private int level = 0;
+    private int speed = 1;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -41,11 +43,15 @@ public class MyWorld extends World
     // Increases the Score
     public void increaseScore() {
         score += 1;
+        if (score % 5 == 0) {
+            level += 1;
+            speed += 1;
+        }
         scoreLabel.setValue(score);
     }
     
     public void spawnAlien() {
-        Alien alien = new Alien();
+        Alien alien = new Alien(speed);
         addObject(alien, Greenfoot.getRandomNumber(400), 0);
     }
 }

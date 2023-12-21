@@ -13,7 +13,12 @@ public class Alien extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     // Controls the speed of Alien
-    private int speed = 2;
+    private int speed;
+    
+    public Alien(int speed) {
+        this.speed = speed;
+    }
+    
     public void act()
     {
         setLocation(getX(), getY() + speed);
