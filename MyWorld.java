@@ -54,4 +54,9 @@ public class MyWorld extends World
         Alien alien = new Alien(speed);
         addObject(alien, Greenfoot.getRandomNumber(400), 0);
     }
+    
+    public void spawnExplosion(int x, int y) {
+        Explosion explosion = new Explosion();
+        addObject(explosion, x, y);
+    }
 }
