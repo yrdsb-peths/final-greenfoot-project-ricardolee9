@@ -8,11 +8,40 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Explosion extends Actor
 {
-    /**
-     * Act - do whatever the Explosion wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    // Explosion Frames
+    GreenfootImage[] idle = new GreenfootImage[28];
+    // Frames Image Index
+    int imageIndex = 0;
+    // Timer
+    SimpleTimer animationTimer = new SimpleTimer();
+    
+    public Explosion() {
+        for (int i = 0; i < idle.length; i++) {
+            idle[i] = new GreenfootImage("images/explosion_tile/" + "tile" + i + ".png");
+            idle[i].scale(100, 100);
+        }
+        // Mark Animation Timer
+        animationTimer.mark();
+        // Set Rocket Image
+        setImage(idle[0]);
+    }
+    
     public void act() {
-        // Add your action code here.
+        animateExplosion();
+        if (imageIndex >= 27) {
+            getWorld().removeObject(this);
+        }
+    }
+    
+    private void animateExplosion() {
+        // Change a frame every 100 ms
+        if (animationTimer.millisElapsed() < 50) {
+            return;
+        }
+        // Reset Timer
+        animationTimer.mark();
+        // Set animation image to next frame
+        setImage(idle[imageIndex]);
+        imageIndex = (imageIndex + 1) % idle.length;
     }
 }
