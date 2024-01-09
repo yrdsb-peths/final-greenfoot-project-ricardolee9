@@ -20,6 +20,7 @@ public class Bullet extends Actor
             removeTouching(Alien.class);
             MyWorld myWorld = (MyWorld) getWorld();
             myWorld.spawnAlien();
+            myWorld.spawnBooster();
             myWorld.spawnExplosion(getX(), getY());
             myWorld.increaseScore();
             getWorld().removeObject(this);

@@ -35,6 +35,8 @@ public class MyWorld extends World
         rocket.turn(-90);
         // Spawn Aliens
         spawnAlien();
+        // Spawn Booster
+        spawnBooster();
         // Score Label
         scoreLabel = new Label(0, 70);
         addObject(scoreLabel, 50, 50);
@@ -53,6 +55,11 @@ public class MyWorld extends World
     public void spawnAlien() {
         Alien alien = new Alien(speed);
         addObject(alien, Greenfoot.getRandomNumber(400), 0);
+    }
+    
+    public void spawnBooster() {
+        Booster booster = new Booster(speed);
+        addObject(booster, Greenfoot.getRandomNumber(400), 0);
     }
     
     public void spawnExplosion(int x, int y) {
