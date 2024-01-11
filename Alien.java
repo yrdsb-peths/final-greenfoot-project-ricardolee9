@@ -27,6 +27,11 @@ public class Alien extends Actor
             Logger.info("Rocket crashed into Alien");
             gameOver();
         }
+        
+        if (getY() >= 600) {
+            Logger.info("Alien reached the end of the world");
+            gameOver();
+        }
     }
     
     private void gameOver() {

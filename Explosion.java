@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Explosion extends Actor
 {
     // Explosion Frames
-    GreenfootImage[] idle = new GreenfootImage[28];
+    GreenfootImage[] idle = new GreenfootImage[27];
     // Frames Image Index
     int imageIndex = 0;
     // Timer
@@ -28,7 +28,7 @@ public class Explosion extends Actor
     
     public void act() {
         animateExplosion();
-        if (imageIndex >= 27) {
+        if (imageIndex >= 26) {
             getWorld().removeObject(this);
         }
     }
