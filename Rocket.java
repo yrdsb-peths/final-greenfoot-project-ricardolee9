@@ -18,7 +18,8 @@ public class Rocket extends Actor
     SimpleTimer animationTimer = new SimpleTimer();
     // Can fire
     boolean fireAble = true;
-    
+    // Rocket Speed
+    int speed = 2;
     /**
      * Constructor for the Rocket class
      */
@@ -68,6 +69,11 @@ public class Rocket extends Actor
         shoot();
         // Animate Rocket
         animateRocket();
+        // Increase speed
+        if (isTouching(Booster.class)) {
+            speed += 2;
+            removeTouching(Booster.class);
+        }
     }
     /**
      * The method that shoots a bullet
@@ -89,7 +95,7 @@ public class Rocket extends Actor
      */
     private void moveLeft() {
         Logger.info(getX());
-        setLocation(getX()-2, getY());
+        setLocation(getX()-speed, getY());
     }
     
     /**
@@ -97,6 +103,6 @@ public class Rocket extends Actor
      */
     private void moveRight() {
         Logger.info(getX());
-        setLocation(getX()+2, getY());
+        setLocation(getX()+speed, getY());
     }
 }
