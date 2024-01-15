@@ -20,6 +20,16 @@ public class EndScreen extends World
         
         // End Game Text
         Label gameEndLabel = new Label("You lose!", 70);
-        addObject(gameEndLabel, getWidth()/2, getHeight()/2);
+        addObject(gameEndLabel, getWidth()/2, getHeight()/2-100);
+        // Restart Game Text
+        Label gameRestartLabel = new Label("Restart by pressing <R>", 30);
+        addObject(gameRestartLabel, getWidth()/2, getHeight()/2+100);
+    }
+    
+    public void act() {
+        if (Greenfoot.isKeyDown("R")) {
+            MyWorld gameWorld = new MyWorld();
+            Greenfoot.setWorld(gameWorld);
+        }
     }
 }

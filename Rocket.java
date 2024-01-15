@@ -65,6 +65,11 @@ public class Rocket extends Actor
         if (Greenfoot.isKeyDown("d") || Greenfoot.isKeyDown("right")) {
             moveRight();
         }
+        // Skip to GameOver World
+        if (Greenfoot.isKeyDown("e")) {
+            EndScreen endScreen = new EndScreen();
+            Greenfoot.setWorld(endScreen);
+        }
         // Shoots a bullet
         shoot();
         // Animate Rocket
