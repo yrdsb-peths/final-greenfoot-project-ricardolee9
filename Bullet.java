@@ -1,30 +1,32 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Bullet here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * The object that Rocket shoots out
  */
 public class Bullet extends Actor
 {
     /**
-     * Act - do whatever the Bullet wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Kills Alien when it touches one
      */
     public void act()
     {
         setLocation(getX(), getY() - 5);
-        
+        // Kill Alien
         if (isTouching(Alien.class)) {
             removeTouching(Alien.class);
+            // Spawn New Alien and Booster
             MyWorld myWorld = (MyWorld) getWorld();
             myWorld.spawnAlien();
             myWorld.spawnBooster();
             myWorld.spawnExplosion(getX(), getY());
             myWorld.increaseScore();
+            // Bullet gone
             getWorld().removeObject(this);
             Logger.info("Bullet hit Alien");
+        } else if (isTouching(Booster.class)) {
+            removeTouching(Booster.class);
+            getWorld().removeObject(this);
+            Logger.info("Bullet hit Booster");
         }
     }
 }

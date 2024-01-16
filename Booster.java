@@ -1,10 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Booster here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Boost the Rocket's speed
  */
 public class Booster extends Actor
 {
@@ -14,10 +11,14 @@ public class Booster extends Actor
     int imageIndex = 0;
     // Animation Timer
     SimpleTimer animationTimer = new SimpleTimer();
+    // Initialize speed
+    private int speed;
     
-    int speed = 2;
-    
+    /**
+     * Constructor of the class, set animation image and speed
+     */
     public Booster(int speed) {
+        // Initialize Animation image 
         for (int i = 0; i < idle.length; i++) {
             idle[i] = new GreenfootImage("images/mario_tile/tile0" + i + ".png");
             idle[i].scale(50, 50);
@@ -30,15 +31,20 @@ public class Booster extends Actor
         this.speed = speed;
     }
     
+    /**
+     * Make the Booster goes downwards
+     */
     public void act()
     {
         // Set Location
         setLocation(getX(), getY()+speed);
-        
         // Animate Booster
         animateBooster();
     }
     
+    /**
+     * Set animation image every 100 ms
+     */
     private void animateBooster() {
         // Change frame every 100 ms
         if (animationTimer.millisElapsed() < 100) {

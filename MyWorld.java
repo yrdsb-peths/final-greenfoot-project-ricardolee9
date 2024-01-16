@@ -1,21 +1,20 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MyWorld here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * The main game world where players play their games
  */
 public class MyWorld extends World
 {
     // Score
     private int score = 0;
+    // Label for score
     private Label scoreLabel;
+    // Level
     private int level = 0;
+    // Alien & Booster speed
     private int speed = 1;
     /**
      * Constructor for objects of class MyWorld.
-     * 
      */
     public MyWorld()
     {    
@@ -42,26 +41,40 @@ public class MyWorld extends World
         addObject(scoreLabel, 50, 50);
     }
     
-    // Increases the Score
+    /**
+     * Increase player's score
+     */
     public void increaseScore() {
+        // Increase Score
         score += 1;
+        // Increase Level
         if (score % 5 == 0) {
             level += 1;
             speed += 1;
         }
+        // Set Label value
         scoreLabel.setValue(score);
     }
     
+    /**
+     * Create a new alien
+     */
     public void spawnAlien() {
         Alien alien = new Alien(speed);
         addObject(alien, Greenfoot.getRandomNumber(400), 0);
     }
     
+    /**
+     * Create a new booster
+     */
     public void spawnBooster() {
         Booster booster = new Booster(speed);
         addObject(booster, Greenfoot.getRandomNumber(400), 0);
     }
     
+    /**
+     * Create explosion object
+     */
     public void spawnExplosion(int x, int y) {
         Explosion explosion = new Explosion();
         addObject(explosion, x, y);
