@@ -1,10 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Rocket here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * The object that the player controls
  */
 public class Rocket extends Actor
 {
@@ -20,10 +17,10 @@ public class Rocket extends Actor
     boolean fireAble = true;
     // Rocket Speed
     int speed = 2;
+    
     /**
      * Constructor for the Rocket class
      */
-    
     public Rocket() {
         // Animation
         for (int i = 0; i < idle.length; i++) {
@@ -54,7 +51,6 @@ public class Rocket extends Actor
     /**
      * Sets the behaviour of the rocket
      */
-    
     public void act()
     {
         // Moves left
@@ -80,26 +76,33 @@ public class Rocket extends Actor
             removeTouching(Booster.class);
         }
     }
+    
     /**
      * The method that shoots a bullet
      */
     private void shoot() {
+        // Shoots a new bullet
         if (fireAble && Greenfoot.isKeyDown("space")) {
             Bullet bullet = new Bullet();
             getWorld().addObject(bullet, getX(), getY());
             sound.play();
+            // Make sure it shoots one per press
             fireAble = false;
             Logger.info("Rocket fires a bullet");
         }
+        // Allow user to shoot another one through another press
         if (!Greenfoot.isKeyDown("space")) {
             fireAble = true;
         }
     }
+    
     /**
      * Method that moves the rocket to left
      */
     private void moveLeft() {
+        // Logging info
         Logger.info(getX());
+        // Move to left
         setLocation(getX()-speed, getY());
     }
     
@@ -107,7 +110,9 @@ public class Rocket extends Actor
      * Method that moves the rocket to right
      */
     private void moveRight() {
+        // Logging Info
         Logger.info(getX());
+        // Move to right
         setLocation(getX()+speed, getY());
     }
 }

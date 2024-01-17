@@ -1,17 +1,14 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*; 
 
 /**
- * Write a description of class EndScreen here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * EndScreen class is the class that constructs the Game Over Screen
+ * for player to quit or restart the game
  */
 public class EndScreen extends World
 {
 
     /**
      * Constructor for objects of class EndScreen.
-     * 
      */
     public EndScreen()
     {    
@@ -26,7 +23,11 @@ public class EndScreen extends World
         addObject(gameRestartLabel, getWidth()/2, getHeight()/2+100);
     }
     
+    /**
+     * Prepare to restart a game
+     */
     public void act() {
+        // Restart Game
         if (Greenfoot.isKeyDown("R")) {
             MyWorld gameWorld = new MyWorld();
             Greenfoot.setWorld(gameWorld);

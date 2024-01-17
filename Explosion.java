@@ -1,10 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Explosion here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Explosion effect when it shoots an Alien
  */
 public class Explosion extends Actor
 {
@@ -15,7 +12,11 @@ public class Explosion extends Actor
     // Timer
     SimpleTimer animationTimer = new SimpleTimer();
     
+    /**
+     * Constructor for the explosion class
+     */
     public Explosion() {
+        // Initialize animation image
         for (int i = 0; i < idle.length; i++) {
             idle[i] = new GreenfootImage("images/explosion_tile/" + "tile" + i + ".png");
             idle[i].scale(100, 100);
@@ -26,13 +27,21 @@ public class Explosion extends Actor
         setImage(idle[0]);
     }
     
+    /**
+     * Remove explosion effect after going through all frames
+     */
     public void act() {
+        // Animate Explosion
         animateExplosion();
+        // Remove when gone through all frames
         if (imageIndex >= 26) {
             getWorld().removeObject(this);
         }
     }
     
+    /**
+     * Change the frame of explosion every 100 ms
+     */
     private void animateExplosion() {
         // Change a frame every 100 ms
         if (animationTimer.millisElapsed() < 50) {
